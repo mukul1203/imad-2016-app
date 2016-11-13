@@ -2,6 +2,24 @@
 <html>
     <head>
         <link href="/ui/style.css" rel="stylesheet" />
+        <script>
+            var CheckSize = function()
+            {
+                var txt = "";
+                var file = document.getElementById("myFile").files[0];
+                if(file)
+                {
+                    if('name' in file)
+                        txt += "<br>FileName: " + file.name;
+                    if('size' in file)
+                    {
+                        txt += "<br>FileSize: " + file.size;
+                        if(file.size > 5000)
+                            txt += "<br>File size exceeds"
+                    }
+                }
+            }
+        </script>
     </head>
     <body>
         <div class="center">
@@ -11,7 +29,10 @@
         <div class="center text-big bold">
             Hi! I am your webapp .
         </div>
-        <input id="myFile" type="file"/>
+        <input id="myFile" type="file" onchange="CheckSize()"/>
+        <div id="display">
+            
+        </div>
         <script type="text/javascript" src="/ui/main.js">
         </script>
     </body>
